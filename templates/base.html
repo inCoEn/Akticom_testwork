@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="cp1251">
+    <link type="text/css" href="{% static 'main.css' %}" rel="stylesheet">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    {% block body %}
+    {% endblock %}
+</body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</html>

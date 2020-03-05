@@ -1,3 +1,4 @@
 from django.contrib import admin
+from CSV_Parser.models import MainModel
 
-# Register your models here.
+admin.site.register(MainModel)
