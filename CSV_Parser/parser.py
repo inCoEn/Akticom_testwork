@@ -20,7 +20,7 @@ class DictParser:
         self.priceSP = change_value(csv_dict['ЦенаСП'])
         if self.priceSP:
             self.priceSP = self.priceSP.replace(',', '.')
-        self.quantity = change_value(csv_dict['Цена'])
+        self.quantity = change_value(csv_dict['Количество'])
         self.prop = change_value(csv_dict['Поля свойств'])
         self.joint = change_value(csv_dict['Совместные покупки'])
         self.unit = change_value(csv_dict['Единица измерения'])

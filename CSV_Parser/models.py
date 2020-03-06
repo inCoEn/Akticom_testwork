@@ -43,6 +43,7 @@ class Units(models.Model):
 class MainModel(models.Model):
 
     code = models.CharField(max_length=50,
+                            unique=True,
                             verbose_name='Код')
     name = models.TextField(verbose_name='Наименование')
     lvl_1 = models.ForeignKey(FirstLevel,
@@ -62,7 +63,8 @@ class MainModel(models.Model):
                                   decimal_places=2,
                                   null=True,
                                   verbose_name='ЦенаСП')
-    quantity = models.FloatField(verbose_name='Количество')
+    quantity = models.FloatField(verbose_name='Количество',
+                                 null=True)
     properties = models.TextField(verbose_name='Поля свойств',
                                   null=True)
     joint_purchase = models.IntegerField(null=True,
@@ -80,6 +82,7 @@ class MainModel(models.Model):
     class Meta:
         db_table = 'MainModel'
         ordering = ['code', 'name']
+        unique_together = ['code', 'name']
 
     def __str__(self):
         return 'Код: {}\nНаименование: {}\nУровень1: {}\nУровень2: {}\nУровень3: {}\n' \

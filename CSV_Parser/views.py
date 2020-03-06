@@ -58,23 +58,22 @@ def update_db(bulk_list):
     :param bulk_list: list of MainModel objects
     :return: None
     """
-
-    if len(bulk_list) > 1:
-        try:
-            MainModel.objects.bulk_create(bulk_list)
-        except (ValueError, IntegrityError):
-            half = len(bulk_list)
-            bulks_list = [bulk_list[:half], bulk_list[half:]]
-            for item in bulks_list:
-                update_db(item)
-    if len(bulk_list) == 1:
-        try:
-            bulk_list[0].save()
-        except (ValueError, IntegrityError):
-            print(bulk_list[0])
-            print(traceback.format_exc())
-    else:
-        pass
+    try:
+        MainModel.objects.bulk_create(bulk_list)
+    except ValueError:
+        for item in bulk_list:
+            try:
+                item.save()
+            except ValueError:
+                print(item)
+                print(traceback.format_exc())
+    except IntegrityError:
+        for item in bulk_list:
+            try:
+                item.save()
+            except IntegrityError:
+                print(item)
+                print(traceback.format_exc())
 
 
 def upload(request):
