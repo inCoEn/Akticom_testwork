@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-import CSV_Parser.urls
+from CSV_Parser import urls, getajax
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(CSV_Parser.urls))
+    path('', include(urls)),
+    #path('getajax', getajax.get_data)
 ]

@@ -1,11 +1,31 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <form id="uploading_form" enctype="multipart/form-data" method="post">
-        {% csrf_token %}
-        {{ upload_form.as_ul }}
-        <br><br>
-        <input type="submit" value="Upload">
-    </form>
-    <h2>{{ message }}</h2>
+    <div class="status_message">
+        <h2>{{ message }}</h2>
+    </div>
+    <div class="data_table">
+        {% if mainpage_items %}
+            <table class="data_table">
+                <tr>
+                    <th>Наименование</th>
+                    <th>Уровень1</th>
+                    <th>Уровень2</th>
+                    <th>Уровень3</th>
+                    <th>Цена</th>
+                    <th>Количество</th>
+                </tr>
+                {% for item in mainpage_items %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.lvl_1__name }}</td>
+                        <td>{{ item.lvl_2__name }}</td>
+                        <td>{{ item.lvl_3__name }}</td>
+                        <td>{{ item.price }}</td>
+                        <td>{{ item.quantity }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
 {% endblock %}

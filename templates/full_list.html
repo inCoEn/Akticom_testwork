@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    {% if data_list %}
+        <table class="data_table">
+            <tr>
+                <th>Наименование</th>
+                <th>Уровень1</th>
+                <th>Уровень2</th>
+                <th>Уровень3</th>
+                <th>Цена</th>
+                <th>Количество</th>
+            </tr>
+            {% for item in data_list %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.lvl_1__name }}</td>
+                    <td>{{ item.lvl_2__name }}</td>
+                    <td>{{ item.lvl_3__name }}</td>
+                    <td>{{ item.price }}</td>
+                    <td>{{ item.quantity }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h2>No data in database. Please load some .csv file on <a href="{% url 'upload_view' %}">start page</a></h2>
+    {% endif %}
+{% endblock %}

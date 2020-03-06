@@ -80,6 +80,10 @@ def upload(request):
 
     global data_bulk
 
+    mainpage_items = MainModel.objects.filter(mainpage_switcher=True)\
+        .values_list('name', 'lvl_1__name', 'lvl_2__name',
+                     'lvl_3__name', 'price', 'quantity', named=True)
+
     if request.method == 'POST':
         upload_form = UploadFileForm(request.POST)
         if upload_form.is_valid():
@@ -103,15 +107,29 @@ def upload(request):
                     update_db(data_bulk)
                     data_bulk = []
                 return render(request, 'upload_page.html', {'upload_form': upload_form,
-                                                            'message': 'DB was updated'})
+                                                            'message': 'DB was updated',
+                                                            'mainpage_items': mainpage_items})
             else:
                 upload_form = UploadFileForm(request.POST)
                 return render(request, 'upload_page.html', {'upload_form': upload_form,
-                                                            'message': 'No file in form'})
+                                                            'message': 'No file in form',
+                                                            'mainpage_items': mainpage_items})
         else:
             upload_form = UploadFileForm(request.POST)
             return render(request, 'upload_page.html', {'upload_form': upload_form,
-                                                        'message': 'Invalid form'})
+                                                        'message': 'Invalid form',
+                                                        'mainpage_items': mainpage_items})
     else:
         upload_form = UploadFileForm(request.POST)
-        return render(request, 'upload_page.html', {'upload_form': upload_form})
+        return render(request, 'upload_page.html', {'upload_form': upload_form,
+                                                    'mainpage_items': mainpage_items})
+
+
+def show_full_list(request):
+
+    upload_form = UploadFileForm()
+    data_list = MainModel.objects.values_list('name', 'lvl_1__name', 'lvl_2__name',
+                                              'lvl_3__name', 'price', 'quantity', named=True)
+
+    return render(request, 'full_list.html', {'upload_form': upload_form,
+                                              'data_list': data_list})

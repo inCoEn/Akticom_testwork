@@ -7,8 +7,17 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+    <form class="uploading_form" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{ upload_form.as_table }}
+        <input type="submit" value="Upload" class="submit_btn">
+    </form>
+    <div class="full_list_link">
+        <a href="{% url 'full_list' %}">Открыть полный список</a>
+    </div>
     {% block body %}
     {% endblock %}
 </body>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!--<script type="text/javascript" src="{% static 'js\file_upload.js' %}"></script>-->
 </html>
