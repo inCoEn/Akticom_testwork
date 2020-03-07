@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block body %}
+    <div class="top_tools">
+        <a href="{% url 'full_list' %}">Открыть полный список</a>
+    </div>
     <div class="status_message">
         <h2>{{ message }}</h2>
     </div>

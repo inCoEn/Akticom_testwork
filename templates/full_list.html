@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block body %}
+    <div class="top_tools">
+        <a href="{% url 'upload_view' %}">На главную</a>
+    </div>
     {% if data_list %}
         <table class="data_table">
             <tr>

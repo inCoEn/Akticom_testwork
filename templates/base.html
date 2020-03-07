@@ -3,18 +3,19 @@
 {% load static %}
 <head>
     <meta http-equiv="content-type" content="text/html" charset="cp1251">
-    <link type="text/css" href="{% static 'main.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <form class="uploading_form" enctype="multipart/form-data" method="post">
-        {% csrf_token %}
-        {{ upload_form.as_table }}
-        <input type="submit" value="Upload" class="submit_btn">
-    </form>
-    <div class="full_list_link">
-        <a href="{% url 'full_list' %}">Открыть полный список</a>
+    <div class="top_tools">
+        <h4 class="form_label">Загрузить файл:</h4>
+        <form class="uploading_form" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            {{ upload_form.as_table }}
+            <input type="submit" value="Upload" class="submit_btn">
+        </form>
     </div>
+
     {% block body %}
     {% endblock %}
 </body>

@@ -1,8 +1,32 @@
+body {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  font-size: 14pt;
+  background: aliceblue;
+
+}
+.top_tools{
+  margin-top: 1px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background: skyblue;
+}
+
+.top_tools a{
+  margin-left: 80%;
+  alignment: center;
+}
+
+.form_label {
+  margin-left: 5%;
+  color: #003399;
+}
+
+.uploading_form {
+  margin-left: 5%;
+}
+
 table {
-  position: relative;
-  left: 20px;
-  right:20px;
-  top: 30px;
+  margin: auto;
   font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
   font-size: 14px;
   background: white;
@@ -23,14 +47,3 @@ td {
   transition: .3s linear;
 }
 tr:hover td {color: #6699ff;}
-
-.uploading_form {
-    position: absolute;
-    top: 1%;
-    left:1%;
-}
-
-.full_list_link{
-    position: relative;
-    left: 50%;
-}
