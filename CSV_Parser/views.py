@@ -77,6 +77,11 @@ def update_db(bulk_list):
 
 
 def upload(request):
+    """
+    Upload file to server and return page
+    :param request: request
+    :return: html
+    """
 
     global data_bulk
 

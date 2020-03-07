@@ -2,6 +2,9 @@ from django.db import models
 
 
 class FirstLevel(models.Model):
+    """
+    First level categories
+    """
 
     name = models.CharField(max_length=100,
                             unique=True)
@@ -11,6 +14,9 @@ class FirstLevel(models.Model):
 
 
 class SecondLevel(models.Model):
+    """
+    Second level categories
+    """
 
     name = models.CharField(max_length=100,
                             unique=True,
@@ -21,6 +27,9 @@ class SecondLevel(models.Model):
 
 
 class ThirdLevel(models.Model):
+    """
+    Third level categories
+    """
 
     name = models.CharField(max_length=100,
                             unique=True,
